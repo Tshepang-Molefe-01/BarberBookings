@@ -43,6 +43,3 @@ C4Context
   UpdateRelStyle(bookingSystem, database, $textColor="black", $lineColor="orange", $offsetY="-40", $offsetX="-50")
   UpdateRelStyle(bookingSystem, notificationService, $textColor="white", $lineColor="teal", $offsetX="-50", $offsetY="20")
   UpdateRelStyle(bookingSystem, paymentService, $textColor="white", $lineColor="purple", $offsetX="-50", $offsetY="30")
-
-  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
-
