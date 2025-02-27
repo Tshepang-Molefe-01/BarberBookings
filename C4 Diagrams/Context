@@ -1,1 +1,48 @@
+C4Context
+  title "System Context Diagram for Online Booking System for Barbershops"
+  
+  Enterprise_Boundary(BarbershopBoundary, "Barbershop System") {
+    Person(client, "Client", "A customer who books barber appointments.")
+    Person(barber, "Barber", "A barber who manages bookings and provides services.")
+    Person_Ext(admin, "Administrator", "Oversees barbershop operations and user management.")
+
+    System(bookingSystem, "Online Booking System", "Handles appointment scheduling and user interactions.")
+
+    Enterprise_Boundary(ServiceBoundary, "Barbershop Services") {
+
+      SystemDb_Ext(database, "Booking Database", "Stores clients, barbers, and appointment details.")
+
+      System_Boundary(ExternalServices, "External Services") {
+        System(paymentService, "Payment Service", "Processes payments securely.")
+        System(notificationService, "Notification Service", "Sends appointment confirmations and reminders via SMS/Email.")
+      }
+
+      Boundary(QueueServices, "Queue Management", "Handles request processing") {
+        SystemQueue(bookingQueue, "Booking Queue", "Manages appointment requests.")
+        SystemQueue_Ext(paymentQueue, "Payment Queue", "Processes transaction requests.")
+      }
+    }
+  }
+
+  BiRel(client, bookingSystem, "Books appointment through")
+  BiRel(barber, bookingSystem, "Manages schedules via")
+  BiRel(bookingSystem, database, "Stores booking details in")
+  Rel(bookingSystem, notificationService, "Sends notifications via", "SMS/Email")
+  Rel(bookingSystem, paymentService, "Handles payments through", "Secure API")
+
+  UpdateElementStyle(client, $fontColor="white", $bgColor="darkblue", $borderColor="black")
+  UpdateElementStyle(barber, $fontColor="black", $bgColor="lightgreen", $borderColor="darkgreen")
+  UpdateElementStyle(admin, $fontColor="black", $bgColor="lightgrey", $borderColor="black")
+  UpdateElementStyle(bookingSystem, $fontColor="white", $bgColor="darkred", $borderColor="black")
+  UpdateElementStyle(database, $fontColor="black", $bgColor="orange", $borderColor="black")
+  UpdateElementStyle(paymentService, $fontColor="white", $bgColor="purple", $borderColor="black")
+  UpdateElementStyle(notificationService, $fontColor="white", $bgColor="teal", $borderColor="black")
+
+  UpdateRelStyle(client, bookingSystem, $textColor="blue", $lineColor="blue", $offsetX="5")
+  UpdateRelStyle(barber, bookingSystem, $textColor="green", $lineColor="green", $offsetY="-10")
+  UpdateRelStyle(bookingSystem, database, $textColor="black", $lineColor="orange", $offsetY="-40", $offsetX="-50")
+  UpdateRelStyle(bookingSystem, notificationService, $textColor="white", $lineColor="teal", $offsetX="-50", $offsetY="20")
+  UpdateRelStyle(bookingSystem, paymentService, $textColor="white", $lineColor="purple", $offsetX="-50", $offsetY="30")
+
+  UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 
