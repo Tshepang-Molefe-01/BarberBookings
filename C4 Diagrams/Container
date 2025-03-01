@@ -1,6 +1,6 @@
 ...
 Mermaid
-graph TD;
+container TD;
     %% External Users
     Client["👤 Client<br>Books Appointments"] -->|Uses| WebApp
     Barber["💈 Barber<br>Manages Schedules"] -->|Uses| WebApp
