@@ -47,3 +47,18 @@ graph TD;
     style Barber fill:#66cc66,stroke:#006600,stroke-width:2px
     style Admin fill:#999999,stroke:#4d4d4d,stroke-width:2px
 ...
+graph TD;
+    %% System Components
+    Frontend["🖥️ Frontend (Web/Mobile)"] --> Backend["🔗 Backend (API Server)"]
+    
+    %% Backend Connections
+    Backend --> Database["🛢️ Database"]
+    Backend --> Payment["💳 Payment Service"]
+    Backend --> Notification["📩 Notification Service"]
+
+    %% Styling
+    style Frontend fill:#4d79ff,stroke:#0033cc,stroke-width:2px
+    style Backend fill:#ff9933,stroke:#b36b00,stroke-width:2px
+    style Database fill:#66cc66,stroke:#006600,stroke-width:2px
+    style Payment fill:#cc66ff,stroke:#6600cc,stroke-width:2px
+    style Notification fill:#66cccc,stroke:#008080,stroke-width:2px
