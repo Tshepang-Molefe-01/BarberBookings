@@ -1,0 +1,37 @@
+...
+Mermaid
+graph TD;
+    %% External Users
+    Client["👤 Client<br>Books Appointments"] -->|Uses| WebApp
+    Barber["💈 Barber<br>Manages Schedules"] -->|Uses| WebApp
+    Admin["🛠️ Admin<br>Oversees Operations"] -->|Manages| WebApp
+
+    %% Main System Components
+    subgraph "🎯 Online Booking System"
+        WebApp["🌐 Web Application<br>(Frontend)"]
+        API["🔗 API Gateway<br>(Backend)"]
+        MobileApp["📱 Mobile App"]
+        Database["📂 Database"]
+    end
+
+    %% External Services
+    API -->|Stores/Retrieves Data| Database
+    API -->|Processes Payments| PaymentService["💳 Payment Service"]
+    API -->|Sends Notifications| NotificationService["📩 Notification Service"]
+
+    %% Queue Management (Optional)
+    API -->|Handles Booking Requests| BookingQueue["📌 Booking Queue"]
+    API -->|Processes Payment Requests| PaymentQueue["📌 Payment Queue"]
+
+    %% Styling
+    style WebApp fill:#ff4d4d,stroke:#b30000,stroke-width:2px
+    style MobileApp fill:#ff4d4d,stroke:#b30000,stroke-width:2px
+    style API fill:#ff9933,stroke:#b36b00,stroke-width:2px
+    style Database fill:#66cc66,stroke:#006600,stroke-width:2px
+    style PaymentService fill:#cc66ff,stroke:#6600cc,stroke-width:2px
+    style NotificationService fill:#66cccc,stroke:#008080,stroke-width:2px
+    style BookingQueue fill:#ffcc00,stroke:#b38f00,stroke-width:2px
+    style PaymentQueue fill:#ffcc00,stroke:#b38f00,stroke-width:2px
+    style Client fill:#4d79ff,stroke:#0033cc,stroke-width:2px
+    style Barber fill:#66cc66,stroke:#006600,stroke-width:2px
+    style Admin fill:#999999,stroke:#4d4d4d,stroke-width:2px
